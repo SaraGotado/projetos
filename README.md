@@ -22,5 +22,5 @@ Ordem de execução dos arquivos:
 
 Existe uma pasta escrito PowerBI, que é a consolidação de todos os gráficos que foram gerados em Python (exceto Heatmap).
 
-Caso tenha algum problema entrar em contato saragotado@gmail.com
+Caso tenha algum problema entrar em contato saragotado@gmail.com ou saracajuy@gmail.com
 
