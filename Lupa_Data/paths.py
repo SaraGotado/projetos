@@ -1,9 +1,9 @@
 import os
 
-# encontra o diretório dos scripts (permite que o script seja executado independente de onde esteja a pasta do projeto)
+# encontra os diretorios dos scripts (permite que o script seja executado independente de onde esteja a pasta do projeto)
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
-# caminhos dos arquivos e diretórios
+# caminhos dos arquivos e diretorios
 PATHS = {
     # main.py
     "csv_path": os.path.join(script_dir, "origem_csv", "Emissão_CO2_por_países.csv"),
