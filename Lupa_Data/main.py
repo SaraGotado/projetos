@@ -32,7 +32,7 @@ df = df[(df["Date"] < "2025-01-01") & (df["Date"] > "1900-01-01")]
 # extrai ano da data
 df["Year"] = df["Date"].dt.year
 
-# biblioteca dos nomes das regioes
+# de para: normalizacao dos nomes das regioes
 mapeamento_regioes = {
     "Euro": "Europa",
     "Europa": "Europa",
@@ -61,12 +61,12 @@ pais_regiao_dict = dict(zip(pais_regiao["Country"], pais_regiao["Region"]))
 # preenche os valores faltantes na coluna "region" usando o dicionario
 df["Region"] = df["Country"].map(pais_regiao_dict).combine_first(df["Region"])
 
-# captura linhas com regioes ainda faltantes (apos o preenchimento)
+# captura linhas com regioes ainda faltantes
 regioes_faltantes = df[df["Region"].isna()]
 df_invalidos = pd.concat([df_invalidos, regioes_faltantes])
 df = df.dropna(subset=["Region"])
 
-# substitui valores nulos em "country" por "outros" (fiz essa funcao para aprimorar a precisao dos dados por regiao)
+# substitui valores nulos em "paises"  por "outros" (fiz essa funcao para aprimorar a precisao dos dados por regiao)
 df["Country"] = df["Country"].fillna("Outros")
 
 # substitui valores nulos em "kilotons of co2" e "metric tons per capita" por 0
@@ -83,7 +83,7 @@ duplicados = df[df.duplicated()]
 df_invalidos = pd.concat([df_invalidos, duplicados])
 df = df.drop_duplicates()
 
-# conversao de tipos de dados
+# conversao de tipos dados de kilots e metrics para numerico
 df["Kilotons of Co2"] = pd.to_numeric(df["Kilotons of Co2"], errors='coerce')
 df["Metric Tons Per Capita"] = pd.to_numeric(df["Metric Tons Per Capita"], errors='coerce')
 
